@@ -1,2 +1,4 @@
-Git/Makefiles/VC15/.vs/
-Git/Makefiles/VC15/x64/
+/Git/Makefiles/VC15/.vs/
+/Git/Makefiles/VC15/x64/
+/Lib/*
+!/Lib/README.md

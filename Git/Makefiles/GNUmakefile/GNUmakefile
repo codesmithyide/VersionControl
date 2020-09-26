@@ -33,6 +33,14 @@ override CXXFLAGS += -O2
 else ifneq (,$(config))
 $(warning Unknown configuration "$(config)")
 endif
+#
+# Additionally, this makefile is customizable with the following
+# settings:
+#
+#      LIBGIT2_ROOT                 Path to the libgit2 installation
+#      BOOST_ROOT                   Path to the Boost installation
+#      ISHIKO_CPP_COLLECTIONS_ROOT  Path to the Ishiko Collections installation
+#      CODESMITHYIDE_TASKS_ROOT     Path to the CodeSmithyIDE/Tasks installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -54,6 +62,22 @@ _builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(bui
 _builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
 $(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
 endif
+
+# ------------
+# Configurable settings:
+# 
+
+# Path to the libgit2 installation
+LIBGIT2_ROOT ?= $(LIBGIT2)
+# Path to the Boost installation
+BOOST_ROOT ?= $(BOOST)
+# Path to the Ishiko Collections installation
+ISHIKO_CPP_COLLECTIONS_ROOT ?= $(ISHIKO_CPP)/Collections
+# Path to the CodeSmithyIDE/Tasks installation
+CODESMITHYIDE_TASKS_ROOT ?= $(CODESMITHYIDE)/Tasks
+
+# ------------
+
 all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a
 
 ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a: $(_builddir)CodeSmithyGit_GitRepository.o
@@ -61,7 +85,7 @@ all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyG
 	$(RANLIB) $@
 
 $(_builddir)CodeSmithyGit_GitRepository.o: ../../Source/GitRepository.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitRepository.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(CODESMITHYIDE_TASKS_ROOT)/Include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitRepository.cpp
 
 clean:
 	rm -f $(_builddir)*.o
