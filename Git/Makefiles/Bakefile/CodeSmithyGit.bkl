@@ -28,6 +28,13 @@ library CodeSmithyGit
 
     headers
     {
+        ../../../Include/CodeSmithy/VersionControl/Git/GitRepository.h
+
         ../../../Include/CodeSmithy/VersionControl/Git/linkoptions.h
+    }
+
+    sources
+    {
+        ../../Source/GitRepository.cpp
     }
 }
