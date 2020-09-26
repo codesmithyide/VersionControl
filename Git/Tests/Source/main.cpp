@@ -4,6 +4,7 @@
     See https://github.com/CodeSmithyIDE/VersionControl/blob/master/LICENSE.txt
 */
 
+#include "GitRepositoryTests.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
 using namespace Ishiko::Tests;
@@ -11,6 +12,11 @@ using namespace Ishiko::Tests;
 int main(int argc, char* argv[])
 {
     TestHarness theTestHarness("CodeSmithyGit");
+
+    theTestHarness.environment().setTestOutputDirectory("../../TestOutput");
+
+    TestSequence& theTests = theTestHarness.tests();
+    theTests.append<GitRepositoryTests>();
 
     return theTestHarness.run();
 }

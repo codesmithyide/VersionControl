@@ -3,5 +3,6 @@
 /Git/Tests/Makefiles/VC15/.vs/
 /Git/Tests/Makefiles/VC15/x64/
 /Git/Tests/Makefiles/VC15/*.user
+/Git/Tests/TestOutput/
 /Lib/*
 !/Lib/README.md

@@ -23,8 +23,14 @@ program CodeSmithyGitTests : CodeSmithyGit, IshikoTestFrameworkCore
         archs = x86 x86_64;
     }
 
+    headers
+    {
+        ../../Source/GitRepositoryTests.h
+    }
+
     sources
     {
         ../../Source/main.cpp
+        ../../Source/GitRepositoryTests.cpp
     }
 }
