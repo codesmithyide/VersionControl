@@ -87,7 +87,7 @@ CODESMITHYIDE_VERSIONCONTROL_ROOT ?= $(CODESMITHYIDE)/VersionControl
 all: $(_builddir)CodeSmithyGitTests
 
 $(_builddir)CodeSmithyGitTests: $(_builddir)CodeSmithyGitTests_main.o $(_builddir)CodeSmithyGitTests_GitRepositoryTests.o
-	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyGitTests_main.o $(_builddir)CodeSmithyGitTests_GitRepositoryTests.o -L$(ISHIKO_CPP_COLLECTIONS_ROOT)/Lib -L$(BOOST_ROOT)/lib -L$(CODESMITHYIDE_TASKS_ROOT)/Lib -L$(LIBGIT2_ROOT)/lib -L$(CODESMITHYIDE_VERSIONCONTROL_ROOT)/Lib -L$(ISHIKO_CPP_ERRORS_ROOT)/Lib -L$(ISHIKO_CPP_PROCESS_ROOT)/Lib -L$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Lib -lCodeSmithyGit -lCodeSmithyTasks -lIshikoTestFrameworkCore -lIshikoProcess -lIshikoErrors -lgit2 -lboost_filesystem -pthread
+	$(CXX) -o $@ $(LDFLAGS) $(_builddir)CodeSmithyGitTests_main.o $(_builddir)CodeSmithyGitTests_GitRepositoryTests.o -L$(ISHIKO_CPP_COLLECTIONS_ROOT)/Lib -L$(BOOST_ROOT)/lib -L$(CODESMITHYIDE_TASKS_ROOT)/Lib -L$(LIBGIT2_ROOT)/lib -L$(CODESMITHYIDE_VERSIONCONTROL_ROOT)/Lib -L$(ISHIKO_CPP_ERRORS_ROOT)/Lib -L$(ISHIKO_CPP_PROCESS_ROOT)/Lib -L$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Lib -lCodeSmithyGit -lCodeSmithyTasks -lIshikoTestFrameworkCore -lIshikoProcess -lIshikoErrors -lgit2 -lboost_filesystem -lssl -lcrypto -lpcre -lz -pthread
 
 $(_builddir)CodeSmithyGitTests_main.o: ../../Source/main.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(CODESMITHYIDE_TASKS_ROOT)/Include -I$(LIBGIT2_ROOT)/include -I$(CODESMITHYIDE_VERSIONCONTROL_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(ISHIKO_CPP_PROCESS_ROOT)/Include -I$(ISHIKO_CPP_TESTFRAMEWORK_ROOT)/Include -std=c++11 ../../Source/main.cpp
