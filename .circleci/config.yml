@@ -1,0 +1,56 @@
+version: 2
+jobs:
+  bootstrap-build:
+    docker:
+      - image: codesmithy/gcc-bootstrap-build-prerequisites:0.1.0
+    steps:
+      - run: 
+          name: "Set CODESMITHYIDE environment variables"
+          command: echo 'export CODESMITHYIDE="/CodeSmithyIDE"' >> $BASH_ENV
+      - run:
+          name: "Checkout CodeSmithyIDE/Tasks dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Tasks.git
+      - checkout:
+          path: /CodeSmithyIDE/VersionControl
+      - run:
+          name: "Build CodeSmithyIDE/Tasks dependency"
+          command: cd /CodeSmithyIDE/Tasks/Makefiles/GNUmakefile && make
+      - run:
+          name: Build
+          command: cd /CodeSmithyIDE/VersionControl/Git/Makefiles/GNUmakefile && make
+      - run:
+          name: Test build
+          command: cd /CodeSmithyIDE/VersionControl/Git/Tests/Makefiles/GNUmakefile && make
+      - run:
+          name: Run the tests
+          command: cd /CodeSmithyIDE/VersionControl/Git/Tests/Makefiles/GNUmakefile && ./CodeSmithyGitTests
+  build:
+    docker:
+      - image: codesmithy/gcc-build-prerequisites:0.1.0
+    steps:
+      - run:
+          name: "Set CODESMITHYIDE environment variables"
+          command: echo 'export CODESMITHYIDE="/CodeSmithyIDE"' >> $BASH_ENV
+      - run:
+          name: "Checkout CodeSmithyIDE/Tasks dependency"
+          command: cd /CodeSmithyIDE && git clone https://github.com/CodeSmithyIDE/Tasks.git
+      - checkout:
+          path: /CodeSmithyIDE/VersionControl
+      - run:
+          name: "Build CodeSmithyIDE/Tasks dependency"
+          command: cd /CodeSmithyIDE/Tasks/Makefiles/GNUmakefile && make
+      - run:
+          name: Build
+          command: cd /CodeSmithyIDE/VersionControl/Git/Makefiles/GNUmakefile && make
+      - run:
+          name: Test build
+          command: cd /CodeSmithyIDE/VersionControl/Git/Tests/Makefiles/GNUmakefile && make
+      - run:
+          name: Run the tests
+          command: cd /CodeSmithyIDE/VersionControl/Git/Tests/Makefiles/GNUmakefile && ./CodeSmithyGitTests
+workflows:
+  version: 2
+  build:
+    jobs:
+      - bootstrap-build
+      - build

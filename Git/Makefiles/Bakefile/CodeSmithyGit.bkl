@@ -1,0 +1,45 @@
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
+codesmithyidepath = envvar("CODESMITHYIDE");
+import $(codesmithyidepath)/Tasks/Include/CodeSmithy/CodeSmithyTasks.bkl;
+
+toolsets = gnu vs2017 vs2015 vs2013;
+
+gnu.makefile = ../GNUmakefile/GNUmakefile;
+vs2017.solutionfile = ../VC15/CodeSmithyGit.sln;
+vs2015.solutionfile = ../VC14/CodeSmithyGit.sln;
+vs2013.solutionfile = ../VC12/CodeSmithyGit.sln;
+
+library CodeSmithyGit : CodeSmithyTasks, libgit2
+{
+    includedirs += ../../../Include/CodeSmithy/VersionControl/Git;
+
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        outputdir = ../../../Lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+        outputdir = ../../../Lib/$(arch);
+    }
+
+    if ($(config) == Debug)
+    {
+        basename = CodeSmithyGit-d;
+    }
+
+    headers
+    {
+        ../../../Include/CodeSmithy/VersionControl/Git/GitRepository.h
+
+        ../../../Include/CodeSmithy/VersionControl/Git/linkoptions.h
+    }
+
+    sources
+    {
+        ../../Source/GitRepository.cpp
+    }
+}

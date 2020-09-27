@@ -1,0 +1,25 @@
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
+codesmithyidepath = envvar("CODESMITHYIDE");
+import $(codesmithyidepath)/Tasks/Include/CodeSmithy/CodeSmithyTasks.bkl;
+
+setting CODESMITHYIDE_VERSIONCONTROL_ROOT
+{
+    help = "Path to the CodeSmithyIDE/VersionControl installation";
+    default = '$(CODESMITHYIDE)/VersionControl';
+}
+
+template CodeSmithyGit : CodeSmithyTasks, libgit2
+{
+    includedirs += $(CODESMITHYIDE_VERSIONCONTROL_ROOT)/Include;
+
+    if ($(toolset) == gnu)
+    {
+        libdirs += $(CODESMITHYIDE_VERSIONCONTROL_ROOT)/Lib;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        libdirs += $(CODESMITHYIDE_VERSIONCONTROL_ROOT)/Lib/$(arch);
+    }
+}
