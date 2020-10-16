@@ -18,13 +18,16 @@ GitTasksTests::GitTasksTests(const TestNumber& number, const TestEnvironment& en
 
 void GitTasksTests::CreateInitTaskTest1(Test& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "GitTasksTests_CreateInitTaskTest1");
+    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() /
+        "GitTasksTests_CreateInitTaskTest1");
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
-    std::unique_ptr<CodeSmithy::Task> task = CodeSmithy::GitTasks::CreateInitTask(repository, outputPath.string());
+    std::unique_ptr<CodeSmithy::Task> task = CodeSmithy::GitTaskFactory::CreateInitTask(repository,
+        outputPath.string());
     task->run();
 
-    // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
+    // TODO : some way to compare directories and make sure it looks good.
+    // Or run some checks on the repo, I don't know.
     ISHTF_PASS();
 }

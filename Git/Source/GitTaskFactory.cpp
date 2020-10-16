@@ -9,7 +9,7 @@
 namespace CodeSmithy
 {
     
-std::unique_ptr<Task> GitTasks::CreateInitTask(GitRepository& repository, const std::string& path)
+std::unique_ptr<Task> GitTaskFactory::CreateInitTask(GitRepository& repository, const std::string& path)
 {
     return repository.init(path);
 }
