@@ -80,8 +80,8 @@ CODESMITHYIDE_TASKS_ROOT ?= $(CODESMITHYIDE)/Tasks
 
 all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a
 
-../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a: $(_builddir)CodeSmithyGit_GitErrorCategory.o $(_builddir)CodeSmithyGit_GitRepository.o $(_builddir)CodeSmithyGit_GitTasks.o
-	$(AR) rc $@ $(_builddir)CodeSmithyGit_GitErrorCategory.o $(_builddir)CodeSmithyGit_GitRepository.o $(_builddir)CodeSmithyGit_GitTasks.o
+../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a: $(_builddir)CodeSmithyGit_GitErrorCategory.o $(_builddir)CodeSmithyGit_GitRepository.o $(_builddir)CodeSmithyGit_GitTaskFactory.o
+	$(AR) rc $@ $(_builddir)CodeSmithyGit_GitErrorCategory.o $(_builddir)CodeSmithyGit_GitRepository.o $(_builddir)CodeSmithyGit_GitTaskFactory.o
 	$(RANLIB) $@
 
 $(_builddir)CodeSmithyGit_GitErrorCategory.o: ../../Source/GitErrorCategory.cpp
@@ -90,8 +90,8 @@ $(_builddir)CodeSmithyGit_GitErrorCategory.o: ../../Source/GitErrorCategory.cpp
 $(_builddir)CodeSmithyGit_GitRepository.o: ../../Source/GitRepository.cpp
 	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(CODESMITHYIDE_TASKS_ROOT)/Include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitRepository.cpp
 
-$(_builddir)CodeSmithyGit_GitTasks.o: ../../Source/GitTasks.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(CODESMITHYIDE_TASKS_ROOT)/Include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitTasks.cpp
+$(_builddir)CodeSmithyGit_GitTaskFactory.o: ../../Source/GitTaskFactory.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(CODESMITHYIDE_TASKS_ROOT)/Include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitTaskFactory.cpp
 
 clean:
 	rm -f $(_builddir)*.o

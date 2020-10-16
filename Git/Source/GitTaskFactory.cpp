@@ -4,7 +4,7 @@
     See https://github.com/CodeSmithyIDE/VersionControl/blob/master/LICENSE.txt
 */
 
-#include "GitTasks.h"
+#include "GitTaskFactory.h"
 
 namespace CodeSmithy
 {

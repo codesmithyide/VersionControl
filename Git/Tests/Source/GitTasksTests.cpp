@@ -5,7 +5,7 @@
 */
 
 #include "GitTasksTests.h"
-#include "CodeSmithy/VersionControl/Git/GitTasks.h"
+#include "CodeSmithy/VersionControl/Git/GitTaskFactory.h"
 #include <boost/filesystem/operations.hpp>
 
 using namespace Ishiko::Tests;

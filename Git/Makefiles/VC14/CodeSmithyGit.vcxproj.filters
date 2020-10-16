@@ -23,7 +23,7 @@
     <ClInclude Include="..\..\..\Include\CodeSmithy\VersionControl\Git\GitRepository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\VersionControl\Git\GitTasks.h">
+    <ClInclude Include="..\..\..\Include\CodeSmithy\VersionControl\Git\GitTaskFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\CodeSmithy\VersionControl\Git\linkoptions.h">
@@ -37,7 +37,7 @@
     <ClCompile Include="..\..\Source\GitRepository.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\GitTasks.cpp">
+    <ClCompile Include="..\..\Source\GitTaskFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
