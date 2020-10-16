@@ -17,7 +17,7 @@ public:
 private:
     static void CreateInitTaskTest1(Ishiko::Tests::Test& test);
     static void CreateCloneTaskTest1(Ishiko::Tests::Test& test);
-
+    static void CreateOpenTaskTest1(Ishiko::Tests::Test& test);
 };
 
 #endif

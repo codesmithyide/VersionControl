@@ -5,7 +5,6 @@
 */
 
 #include "GitRepository.h"
-#include "CodeSmithy/Tasks/SyncFunctionTask.h"
 
 namespace CodeSmithy
 {
@@ -48,15 +47,10 @@ void GitRepository::clone(const std::string& url, const std::string& clonePath)
     }
 }
 
-std::unique_ptr<Task> GitRepository::open(const std::string& path)
+void GitRepository::open(const std::string& path)
 {
-    return std::unique_ptr<Task>(new SyncFunctionTask(
-        [this, path]() -> void
-        {
-            // TODO: error handling
-            int err = git_repository_open(&m_repository, path.c_str());
-        }
-    ));
+    // TODO: error handling
+    int err = git_repository_open(&m_repository, path.c_str());
 }
 
 void GitRepository::checkout()

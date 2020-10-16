@@ -57,7 +57,7 @@ void GitRepositoryTests::OpenTest1(Test& test)
     boost::filesystem::path inputPath(test.environment().getTestOutputDirectory() / "GitRepositoryTests_InitTest1");
 
     CodeSmithy::GitRepository repository;
-    repository.open(inputPath.string())->run();
+    repository.open(inputPath.string());
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
     ISHTF_PASS();

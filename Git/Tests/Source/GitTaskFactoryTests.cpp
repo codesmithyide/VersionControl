@@ -15,6 +15,7 @@ GitTaskFactoryTests::GitTaskFactoryTests(const TestNumber& number, const TestEnv
 {
     append<HeapAllocationErrorsTest>("CreateInitTask test 1", CreateInitTaskTest1);
     append<HeapAllocationErrorsTest>("CreateCloneTask test 1", CreateCloneTaskTest1);
+    append<HeapAllocationErrorsTest>("CreateOpenTask test 1", CreateOpenTaskTest1);
 }
 
 void GitTaskFactoryTests::CreateInitTaskTest1(Test& test)
@@ -48,5 +49,19 @@ void GitTaskFactoryTests::CreateCloneTaskTest1(Test& test)
 
     // TODO : some way to compare directories and make sure it looks good.
     // Or run some checks on the repo, I don't know.
+    ISHTF_PASS();
+}
+
+void GitTaskFactoryTests::CreateOpenTaskTest1(Test& test)
+{
+    boost::filesystem::path inputPath(test.environment().getTestOutputDirectory() /
+        "GitTaskFactoryTests_CreateInitTaskTest1");
+
+    CodeSmithy::GitRepository repository;
+    std::unique_ptr<CodeSmithy::Task> task = CodeSmithy::GitTaskFactory::CreateOpenTask(repository,
+        inputPath.string());
+    task->run();
+
+    // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
     ISHTF_PASS();
 }

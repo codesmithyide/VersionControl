@@ -31,4 +31,14 @@ std::unique_ptr<Task> GitTaskFactory::CreateCloneTask(GitRepository& repository,
     ));
 }
 
+std::unique_ptr<Task> GitTaskFactory::CreateOpenTask(GitRepository& repository, const std::string& path)
+{
+    return std::unique_ptr<Task>(new SyncFunctionTask(
+        [&repository, path]() -> void
+        {
+            repository.open(path);
+        }
+    ));
+}
+
 }

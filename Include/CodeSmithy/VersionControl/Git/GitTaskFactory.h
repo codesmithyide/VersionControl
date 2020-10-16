@@ -8,6 +8,7 @@
 #define _CODESMITHY_VERSIONCONTROL_GIT_GITTASKFACTORY_H_
 
 #include "GitRepository.h"
+#include "CodeSmithy/Tasks/Task.h"
 #include <string>
 
 namespace CodeSmithy
@@ -19,6 +20,7 @@ public:
     static std::unique_ptr<Task> CreateInitTask(GitRepository& repository, const std::string& path);
     static std::unique_ptr<Task> CreateCloneTask(GitRepository& repository, const std::string& url,
         const std::string& clonePath);
+    static std::unique_ptr<Task> CreateOpenTask(GitRepository& repository, const std::string& path);
 };
 
 }
