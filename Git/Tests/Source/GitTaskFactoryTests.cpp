@@ -10,16 +10,16 @@
 
 using namespace Ishiko::Tests;
 
-GitTasksTests::GitTasksTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "GitTasks tests", environment)
+GitTaskFactoryTests::GitTaskFactoryTests(const TestNumber& number, const TestEnvironment& environment)
+    : TestSequence(number, "GitTaskFactory tests", environment)
 {
     append<HeapAllocationErrorsTest>("CreateInitTask test 1", CreateInitTaskTest1);
 }
 
-void GitTasksTests::CreateInitTaskTest1(Test& test)
+void GitTaskFactoryTests::CreateInitTaskTest1(Test& test)
 {
     boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() /
-        "GitTasksTests_CreateInitTaskTest1");
+        "GitTaskFactoryTests_CreateInitTaskTest1");
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;

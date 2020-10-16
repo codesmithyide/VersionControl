@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 
     TestSequence& theTests = theTestHarness.tests();
     theTests.append<GitRepositoryTests>();
-    theTests.append<GitTasksTests>();
+    theTests.append<GitTaskFactoryTests>();
 
     return theTestHarness.run();
 }
