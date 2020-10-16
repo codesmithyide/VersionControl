@@ -150,10 +150,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\GitErrorCategory.cpp" />
     <ClCompile Include="..\..\Source\GitRepository.cpp" />
+    <ClCompile Include="..\..\Source\GitTasks.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Include\CodeSmithy\VersionControl\Git\GitErrorCategory.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\VersionControl\Git\GitRepository.h" />
+    <ClInclude Include="..\..\..\Include\CodeSmithy\VersionControl\Git\GitTasks.h" />
     <ClInclude Include="..\..\..\Include\CodeSmithy\VersionControl\Git\linkoptions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

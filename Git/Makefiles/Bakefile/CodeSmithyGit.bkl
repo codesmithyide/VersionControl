@@ -33,13 +33,17 @@ library CodeSmithyGit : CodeSmithyTasks, libgit2
 
     headers
     {
+        ../../../Include/CodeSmithy/VersionControl/Git/GitErrorCategory.h
         ../../../Include/CodeSmithy/VersionControl/Git/GitRepository.h
+        ../../../Include/CodeSmithy/VersionControl/Git/GitTasks.h
 
         ../../../Include/CodeSmithy/VersionControl/Git/linkoptions.h
     }
 
     sources
     {
+        ../../Source/GitErrorCategory.cpp
         ../../Source/GitRepository.cpp
+        ../../Source/GitTasks.cpp
     }
 }
