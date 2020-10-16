@@ -5,6 +5,7 @@
 */
 
 #include "GitRepository.h"
+#include "GitErrorCategory.h"
 
 namespace CodeSmithy
 {
@@ -34,16 +35,8 @@ void GitRepository::clone(const std::string& url, const std::string& clonePath)
     int err = git_clone(&m_repository, url.c_str(), clonePath.c_str(), 0);
     if (err < 0)
     {
-        if (err == GIT_ENOTFOUND)
-        {
-            char* msg = 0;
-        }
-        else
-        {
-            char* msg = giterr_last()->message;
-            int i = 0;
-            ++i;
-        }
+        char* msg = giterr_last()->message;
+        Throw(GitErrorCategory::eGeneric, msg, __FILE__, __LINE__);
     }
 }
 
