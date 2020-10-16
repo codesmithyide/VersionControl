@@ -5,7 +5,7 @@
 */
 
 #include "GitRepositoryTests.h"
-#include "GitTasksTests.h"
+#include "GitTaskFactoryTests.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
 using namespace Ishiko::Tests;

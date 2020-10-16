@@ -4,7 +4,7 @@
     See https://github.com/CodeSmithyIDE/VersionControl/blob/master/LICENSE.txt
 */
 
-#include "GitTasksTests.h"
+#include "GitTaskFactoryTests.h"
 #include "CodeSmithy/VersionControl/Git/GitTaskFactory.h"
 #include <boost/filesystem/operations.hpp>
 

@@ -20,7 +20,7 @@
     <ClInclude Include="..\..\Source\GitRepositoryTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\GitTasksTests.h">
+    <ClInclude Include="..\..\Source\GitTaskFactoryTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -31,7 +31,7 @@
     <ClCompile Include="..\..\Source\GitRepositoryTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\GitTasksTests.cpp">
+    <ClCompile Include="..\..\Source\GitTaskFactoryTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
