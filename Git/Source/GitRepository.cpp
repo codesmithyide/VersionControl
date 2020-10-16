@@ -29,27 +29,23 @@ void GitRepository::init(const std::string& path)
     int err = git_repository_init(&m_repository, path.c_str(), 0);
 }
 
-std::unique_ptr<Task> GitRepository::clone(const std::string& url, const std::string& clonePath)
+void GitRepository::clone(const std::string& url, const std::string& clonePath)
 {
-    return std::unique_ptr<Task>(new SyncFunctionTask(
-        [this, url, clonePath]() -> void
+    // TODO
+    int err = git_clone(&m_repository, url.c_str(), clonePath.c_str(), 0);
+    if (err < 0)
+    {
+        if (err == GIT_ENOTFOUND)
         {
-            // TODO
-            int err = git_clone(&m_repository, url.c_str(), clonePath.c_str(), 0);
-            if (err < 0) {
-                if (err == GIT_ENOTFOUND)
-                {
-                    char* msg = 0;
-                }
-                else
-                {
-                    char* msg = giterr_last()->message;
-                    int i = 0;
-                    ++i;
-                }
-            }
+            char* msg = 0;
         }
-    ));
+        else
+        {
+            char* msg = giterr_last()->message;
+            int i = 0;
+            ++i;
+        }
+    }
 }
 
 std::unique_ptr<Task> GitRepository::open(const std::string& path)

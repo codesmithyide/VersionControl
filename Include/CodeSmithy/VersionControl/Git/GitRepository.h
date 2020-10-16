@@ -28,7 +28,7 @@ public:
     void init(const std::string& path);
     // TODO url can actually be a file path, but in that case the clone may have 
     // hard links to the cloned repo, that may be some behavior I want to change
-    std::unique_ptr<Task> clone(const std::string& url, const std::string& clonePath);
+    void clone(const std::string& url, const std::string& clonePath);
     std::unique_ptr<Task> open(const std::string& path);
 
     void checkout();

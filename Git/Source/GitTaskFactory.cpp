@@ -20,4 +20,15 @@ std::unique_ptr<Task> GitTaskFactory::CreateInitTask(GitRepository& repository, 
     ));
 }
 
+std::unique_ptr<Task> GitTaskFactory::CreateCloneTask(GitRepository& repository, const std::string& url,
+    const std::string& clonePath)
+{
+    return std::unique_ptr<Task>(new SyncFunctionTask(
+        [&repository, url, clonePath]() mutable
+        {
+            repository.clone(url, clonePath);
+        }
+    ));
+}
+
 }

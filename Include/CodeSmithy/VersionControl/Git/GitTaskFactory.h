@@ -17,6 +17,8 @@ class GitTaskFactory
 {
 public:
     static std::unique_ptr<Task> CreateInitTask(GitRepository& repository, const std::string& path);
+    static std::unique_ptr<Task> CreateCloneTask(GitRepository& repository, const std::string& url,
+        const std::string& clonePath);
 };
 
 }

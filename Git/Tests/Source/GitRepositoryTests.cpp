@@ -46,7 +46,7 @@ void GitRepositoryTests::CloneTest1(Test& test)
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
-    repository.clone(inputPath.string(), outputPath.string())->run();
+    repository.clone(inputPath.string(), outputPath.string());
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
     ISHTF_PASS();
