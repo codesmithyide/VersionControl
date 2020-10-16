@@ -1,4 +1,5 @@
 ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/Errors/Include/Ishiko/Errors.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
 codesmithyidepath = envvar("CODESMITHYIDE");
 import $(codesmithyidepath)/Tasks/Include/CodeSmithy/CodeSmithyTasks.bkl;
@@ -10,7 +11,7 @@ vs2017.solutionfile = ../VC15/CodeSmithyGit.sln;
 vs2015.solutionfile = ../VC14/CodeSmithyGit.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyGit.sln;
 
-library CodeSmithyGit : CodeSmithyTasks, libgit2
+library CodeSmithyGit : CodeSmithyTasks, IshikoErrors, libgit2
 {
     includedirs += ../../../Include/CodeSmithy/VersionControl/Git;
 
