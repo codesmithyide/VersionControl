@@ -23,15 +23,10 @@ GitRepository::~GitRepository()
     git_libgit2_shutdown();
 }
 
-std::unique_ptr<Task> GitRepository::init(const std::string& path)
+void GitRepository::init(const std::string& path)
 {
-    return std::unique_ptr<Task>(new SyncFunctionTask(
-        [this, path]() -> void
-        {
-            // TODO: error handling
-            int err = git_repository_init(&m_repository, path.c_str(), 0);
-        }
-    ));
+    // TODO: error handling
+    int err = git_repository_init(&m_repository, path.c_str(), 0);
 }
 
 std::unique_ptr<Task> GitRepository::clone(const std::string& url, const std::string& clonePath)

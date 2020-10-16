@@ -22,9 +22,10 @@ class GitRepository
 {
 public:
     GitRepository();
+    GitRepository(const GitRepository& other) = delete;
     ~GitRepository();
 
-    std::unique_ptr<Task> init(const std::string& path);
+    void init(const std::string& path);
     // TODO url can actually be a file path, but in that case the clone may have 
     // hard links to the cloned repo, that may be some behavior I want to change
     std::unique_ptr<Task> clone(const std::string& url, const std::string& clonePath);

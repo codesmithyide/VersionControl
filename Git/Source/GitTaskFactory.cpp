@@ -5,13 +5,19 @@
 */
 
 #include "GitTaskFactory.h"
+#include "CodeSmithy/Tasks/SyncFunctionTask.h"
 
 namespace CodeSmithy
 {
     
 std::unique_ptr<Task> GitTaskFactory::CreateInitTask(GitRepository& repository, const std::string& path)
 {
-    return repository.init(path);
+    return std::unique_ptr<Task>(new SyncFunctionTask(
+        [&repository, path]() mutable
+        {
+            repository.init(path);
+        }
+    ));
 }
 
 }

@@ -33,7 +33,7 @@ void GitRepositoryTests::InitTest1(Test& test)
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
-    repository.init(outputPath.string())->run();
+    repository.init(outputPath.string());
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
     ISHTF_PASS();
