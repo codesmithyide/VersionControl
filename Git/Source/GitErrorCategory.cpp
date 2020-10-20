@@ -17,6 +17,11 @@ const GitErrorCategory& GitErrorCategory::Get() noexcept
     return theCategory;
 }
 
+const char* GitErrorCategory::name() const noexcept
+{
+    return "CodeSmithy::GitErrorCategory";
+}
+
 void Throw(GitErrorCategory::EErrorValues value, const std::string& message, const char* file, int line)
 {
     throw Exception(value, GitErrorCategory::Get(), message, file, line);

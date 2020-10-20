@@ -23,6 +23,8 @@ public:
 
     static const GitErrorCategory& Get() noexcept;
 
+    const char* name() const noexcept override;
+
 private:
     GitErrorCategory() noexcept = default;
 };

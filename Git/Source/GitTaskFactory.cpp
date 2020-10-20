@@ -5,7 +5,9 @@
 */
 
 #include "GitTaskFactory.h"
-#include "CodeSmithy/Tasks/SyncFunctionTask.h"
+#include <Ishiko/Tasks/SyncFunctionTask.h>
+
+using namespace Ishiko;
 
 namespace CodeSmithy
 {
