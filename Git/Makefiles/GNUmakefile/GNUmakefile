@@ -37,10 +37,11 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
-#      LIBGIT2_ROOT                 Path to the libgit2 installation
 #      BOOST_ROOT                   Path to the Boost installation
 #      ISHIKO_CPP_COLLECTIONS_ROOT  Path to the Ishiko Collections installation
-#      CODESMITHYIDE_TASKS_ROOT     Path to the CodeSmithyIDE/Tasks installation
+#      ISHIKO_CPP_TASKS_ROOT        Path to the Ishiko/Tasks installation
+#      ISHIKO_CPP_ERRORS_ROOT       Path to the Ishiko Errors installation
+#      LIBGIT2_ROOT                 Path to the libgit2 installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -67,25 +68,33 @@ endif
 # Configurable settings:
 # 
 
-# Path to the libgit2 installation
-LIBGIT2_ROOT ?= $(LIBGIT2)
 # Path to the Boost installation
 BOOST_ROOT ?= $(BOOST)
 # Path to the Ishiko Collections installation
 ISHIKO_CPP_COLLECTIONS_ROOT ?= $(ISHIKO_CPP)/Collections
-# Path to the CodeSmithyIDE/Tasks installation
-CODESMITHYIDE_TASKS_ROOT ?= $(CODESMITHYIDE)/Tasks
+# Path to the Ishiko/Tasks installation
+ISHIKO_CPP_TASKS_ROOT ?= $(ISHIKO_CPP)/Tasks
+# Path to the Ishiko Errors installation
+ISHIKO_CPP_ERRORS_ROOT ?= $(ISHIKO_CPP)/Errors
+# Path to the libgit2 installation
+LIBGIT2_ROOT ?= $(LIBGIT2)
 
 # ------------
 
 all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a
 
-../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a: $(_builddir)CodeSmithyGit_GitRepository.o
-	$(AR) rc $@ $(_builddir)CodeSmithyGit_GitRepository.o
+../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a: $(_builddir)CodeSmithyGit_GitErrorCategory.o $(_builddir)CodeSmithyGit_GitRepository.o $(_builddir)CodeSmithyGit_GitTaskFactory.o
+	$(AR) rc $@ $(_builddir)CodeSmithyGit_GitErrorCategory.o $(_builddir)CodeSmithyGit_GitRepository.o $(_builddir)CodeSmithyGit_GitTaskFactory.o
 	$(RANLIB) $@
 
+$(_builddir)CodeSmithyGit_GitErrorCategory.o: ../../Source/GitErrorCategory.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitErrorCategory.cpp
+
 $(_builddir)CodeSmithyGit_GitRepository.o: ../../Source/GitRepository.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(CODESMITHYIDE_TASKS_ROOT)/Include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitRepository.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitRepository.cpp
+
+$(_builddir)CodeSmithyGit_GitTaskFactory.o: ../../Source/GitTaskFactory.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitTaskFactory.cpp
 
 clean:
 	rm -f $(_builddir)*.o

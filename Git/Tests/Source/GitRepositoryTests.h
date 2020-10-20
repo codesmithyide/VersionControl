@@ -18,6 +18,7 @@ private:
     static void CreationTest1(Ishiko::Tests::Test& test);
     static void InitTest1(Ishiko::Tests::Test& test);
     static void CloneTest1(Ishiko::Tests::Test& test);
+    static void CloneTest2(Ishiko::Tests::Test& test);
     static void OpenTest1(Ishiko::Tests::Test& test);
     static void CheckIfRepositoryTest1(Ishiko::Tests::Test& test);
     static void CheckIfRepositoryTest2(Ishiko::Tests::Test& test);
