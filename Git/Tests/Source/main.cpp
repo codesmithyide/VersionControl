@@ -5,6 +5,7 @@
 */
 
 #include "GitRepositoryTests.h"
+#include "GitTaskFactoryTests.h"
 #include "Ishiko/TestFramework/TestFrameworkCore.h"
 
 using namespace Ishiko::Tests;
@@ -17,6 +18,7 @@ int main(int argc, char* argv[])
 
     TestSequence& theTests = theTestHarness.tests();
     theTests.append<GitRepositoryTests>();
+    theTests.append<GitTaskFactoryTests>();
 
     return theTestHarness.run();
 }
