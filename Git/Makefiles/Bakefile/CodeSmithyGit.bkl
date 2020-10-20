@@ -1,7 +1,7 @@
 ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/Tasks/Include/Ishiko/IshikoTasks.bkl;
+import $(ishikopath)/Errors/Include/Ishiko/Errors.bkl;
 import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
-codesmithyidepath = envvar("CODESMITHYIDE");
-import $(codesmithyidepath)/Tasks/Include/CodeSmithy/CodeSmithyTasks.bkl;
 
 toolsets = gnu vs2017 vs2015 vs2013;
 
@@ -10,7 +10,7 @@ vs2017.solutionfile = ../VC15/CodeSmithyGit.sln;
 vs2015.solutionfile = ../VC14/CodeSmithyGit.sln;
 vs2013.solutionfile = ../VC12/CodeSmithyGit.sln;
 
-library CodeSmithyGit : CodeSmithyTasks, libgit2
+library CodeSmithyGit : IshikoTasks, IshikoErrors, libgit2
 {
     includedirs += ../../../Include/CodeSmithy/VersionControl/Git;
 
@@ -33,13 +33,17 @@ library CodeSmithyGit : CodeSmithyTasks, libgit2
 
     headers
     {
+        ../../../Include/CodeSmithy/VersionControl/Git/GitErrorCategory.h
         ../../../Include/CodeSmithy/VersionControl/Git/GitRepository.h
+        ../../../Include/CodeSmithy/VersionControl/Git/GitTaskFactory.h
 
         ../../../Include/CodeSmithy/VersionControl/Git/linkoptions.h
     }
 
     sources
     {
+        ../../Source/GitErrorCategory.cpp
         ../../Source/GitRepository.cpp
+        ../../Source/GitTaskFactory.cpp
     }
 }

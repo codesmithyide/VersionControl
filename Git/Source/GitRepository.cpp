@@ -5,7 +5,7 @@
 */
 
 #include "GitRepository.h"
-#include "CodeSmithy/Tasks/SyncFunctionTask.h"
+#include "GitErrorCategory.h"
 
 namespace CodeSmithy
 {
@@ -23,49 +23,27 @@ GitRepository::~GitRepository()
     git_libgit2_shutdown();
 }
 
-std::unique_ptr<Task> GitRepository::init(const std::string& path)
+void GitRepository::init(const std::string& path)
 {
-    return std::unique_ptr<Task>(new SyncFunctionTask(
-        [this, path]() -> void
-        {
-            // TODO: error handling
-            int err = git_repository_init(&m_repository, path.c_str(), 0);
-        }
-    ));
+    // TODO: error handling
+    int err = git_repository_init(&m_repository, path.c_str(), 0);
 }
 
-std::unique_ptr<Task> GitRepository::clone(const std::string& url, const std::string& clonePath)
+void GitRepository::clone(const std::string& url, const std::string& clonePath)
 {
-    return std::unique_ptr<Task>(new SyncFunctionTask(
-        [this, url, clonePath]() -> void
-        {
-            // TODO
-            int err = git_clone(&m_repository, url.c_str(), clonePath.c_str(), 0);
-            if (err < 0) {
-                if (err == GIT_ENOTFOUND)
-                {
-                    char* msg = 0;
-                }
-                else
-                {
-                    char* msg = giterr_last()->message;
-                    int i = 0;
-                    ++i;
-                }
-            }
-        }
-    ));
+    // TODO
+    int err = git_clone(&m_repository, url.c_str(), clonePath.c_str(), 0);
+    if (err < 0)
+    {
+        char* msg = giterr_last()->message;
+        Throw(GitErrorCategory::eGeneric, msg, __FILE__, __LINE__);
+    }
 }
 
-std::unique_ptr<Task> GitRepository::open(const std::string& path)
+void GitRepository::open(const std::string& path)
 {
-    return std::unique_ptr<Task>(new SyncFunctionTask(
-        [this, path]() -> void
-        {
-            // TODO: error handling
-            int err = git_repository_open(&m_repository, path.c_str());
-        }
-    ));
+    // TODO: error handling
+    int err = git_repository_open(&m_repository, path.c_str());
 }
 
 void GitRepository::checkout()
