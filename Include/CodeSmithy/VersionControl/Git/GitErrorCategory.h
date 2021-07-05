@@ -7,8 +7,8 @@
 #ifndef _CODESMITHY_VERSIONCONTROL_GIT_GITERRORCATEGORY_H_
 #define _CODESMITHY_VERSIONCONTROL_GIT_GITERRORCATEGORY_H_
 
-#include <Ishiko/Errors/ErrorCategory.h>
-#include <Ishiko/Errors/Exception.h>
+#include <Ishiko/Errors.h>
+#include <string>
 
 namespace CodeSmithy
 {

@@ -5,6 +5,7 @@
 */
 
 #include "GitErrorCategory.h"
+#include <Ishiko/Errors/Exception.h>
 
 using namespace Ishiko;
 
