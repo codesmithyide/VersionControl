@@ -12,15 +12,15 @@ setting CODESMITHYIDE_VERSIONCONTROL_ROOT
 
 template CodeSmithyGit : IshikoTasks, IshikoErrors, libgit2
 {
-    includedirs += $(CODESMITHYIDE_VERSIONCONTROL_ROOT)/Include;
+    includedirs += $(CODESMITHYIDE_VERSIONCONTROL_ROOT)/include;
 
     if ($(toolset) == gnu)
     {
-        libdirs += $(CODESMITHYIDE_VERSIONCONTROL_ROOT)/Lib;
+        libdirs += $(CODESMITHYIDE_VERSIONCONTROL_ROOT)/lib;
     }
 
     if ($(toolset) != gnu)
     {
-        libdirs += $(CODESMITHYIDE_VERSIONCONTROL_ROOT)/Lib/$(arch);
+        libdirs += $(CODESMITHYIDE_VERSIONCONTROL_ROOT)/lib/$(arch);
     }
 }
