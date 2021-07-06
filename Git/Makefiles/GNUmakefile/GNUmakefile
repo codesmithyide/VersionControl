@@ -81,25 +81,25 @@ ISHIKO_CPP_TASKS_ROOT ?= $(ISHIKO_CPP)/tasks
 
 # ------------
 
-all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a
+all: ../Bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a
 
-../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a: $(_builddir)CodeSmithyGit_GitErrorCategory.o $(_builddir)CodeSmithyGit_GitRepository.o $(_builddir)CodeSmithyGit_GitTaskFactory.o
+../Bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a: $(_builddir)CodeSmithyGit_GitErrorCategory.o $(_builddir)CodeSmithyGit_GitRepository.o $(_builddir)CodeSmithyGit_GitTaskFactory.o
 	$(AR) rc $@ $(_builddir)CodeSmithyGit_GitErrorCategory.o $(_builddir)CodeSmithyGit_GitRepository.o $(_builddir)CodeSmithyGit_GitTaskFactory.o
 	$(RANLIB) $@
 
 $(_builddir)CodeSmithyGit_GitErrorCategory.o: ../../Source/GitErrorCategory.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitErrorCategory.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(LIBGIT2_ROOT)/include -I../../../include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitErrorCategory.cpp
 
 $(_builddir)CodeSmithyGit_GitRepository.o: ../../Source/GitRepository.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitRepository.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(LIBGIT2_ROOT)/include -I../../../include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitRepository.cpp
 
 $(_builddir)CodeSmithyGit_GitTaskFactory.o: ../../Source/GitTaskFactory.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitTaskFactory.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(LIBGIT2_ROOT)/include -I../../../include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitTaskFactory.cpp
 
 clean:
 	rm -f $(_builddir)*.o
 	rm -f $(_builddir)*.d
-	rm -f ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a
+	rm -f ../Bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a
 
 .PHONY: all clean
 

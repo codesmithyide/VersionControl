@@ -13,18 +13,18 @@ vs2013.solutionfile = ../VC12/CodeSmithyGit.sln;
 
 library CodeSmithyGit : IshikoTasks, IshikoErrors, libgit2
 {
-    includedirs += ../../../Include/CodeSmithy/VersionControl/Git;
+    includedirs += ../../../include/CodeSmithy/VersionControl/Git;
 
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        outputdir = ../../../Lib;
+        outputdir = ../../../lib;
     }
 
     if ($(toolset) != gnu)
     {
         archs = x86 x86_64;
-        outputdir = ../../../Lib/$(arch);
+        outputdir = ../../../lib/$(arch);
     }
 
     if ($(config) == Debug)
@@ -34,11 +34,11 @@ library CodeSmithyGit : IshikoTasks, IshikoErrors, libgit2
 
     headers
     {
-        ../../../Include/CodeSmithy/VersionControl/Git/GitErrorCategory.h
-        ../../../Include/CodeSmithy/VersionControl/Git/GitRepository.h
-        ../../../Include/CodeSmithy/VersionControl/Git/GitTaskFactory.h
+        ../../../include/CodeSmithy/VersionControl/Git/GitErrorCategory.h
+        ../../../include/CodeSmithy/VersionControl/Git/GitRepository.h
+        ../../../include/CodeSmithy/VersionControl/Git/GitTaskFactory.h
 
-        ../../../Include/CodeSmithy/VersionControl/Git/linkoptions.h
+        ../../../include/CodeSmithy/VersionControl/Git/linkoptions.h
     }
 
     sources

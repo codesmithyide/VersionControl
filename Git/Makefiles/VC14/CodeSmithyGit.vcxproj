@@ -69,17 +69,17 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>CodeSmithyGit-d</TargetName>
-    <OutDir>..\Bakefile\..\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\Bakefile\..\..\..\lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>CodeSmithyGit-d</TargetName>
-    <OutDir>..\Bakefile\..\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\Bakefile\..\..\..\lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\Bakefile\..\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\Bakefile\..\..\..\lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\Bakefile\..\..\..\Lib\$(Platform)\</OutDir>
+    <OutDir>..\Bakefile\..\..\..\lib\$(Platform)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP)/errors\include;$(LIBGIT2)\$(Platform)\include;..\..\..\Include\CodeSmithy\VersionControl\Git</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP)/errors\include;$(LIBGIT2)\$(Platform)\include;..\..\..\include\CodeSmithy\VersionControl\Git</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP)/errors\include;$(LIBGIT2)\$(Platform)\include;..\..\..\Include\CodeSmithy\VersionControl\Git</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP)/errors\include;$(LIBGIT2)\$(Platform)\include;..\..\..\include\CodeSmithy\VersionControl\Git</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP)/errors\include;$(LIBGIT2)\$(Platform)\include;..\..\..\Include\CodeSmithy\VersionControl\Git</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP)/errors\include;$(LIBGIT2)\$(Platform)\include;..\..\..\include\CodeSmithy\VersionControl\Git</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -139,7 +139,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP)/errors\include;$(LIBGIT2)\$(Platform)\include;..\..\..\Include\CodeSmithy\VersionControl\Git</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ISHIKO_CPP)/collections\include;$(ISHIKO_CPP_THIRD_PARTY_BOOST);$(ISHIKO_CPP)/tasks\include;$(ISHIKO_CPP)/errors\include;$(LIBGIT2)\$(Platform)\include;..\..\..\include\CodeSmithy\VersionControl\Git</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -155,10 +155,10 @@
     <ClCompile Include="..\..\Source\GitTaskFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Include\CodeSmithy\VersionControl\Git\GitErrorCategory.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\VersionControl\Git\GitRepository.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\VersionControl\Git\GitTaskFactory.h" />
-    <ClInclude Include="..\..\..\Include\CodeSmithy\VersionControl\Git\linkoptions.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\VersionControl\Git\GitErrorCategory.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\VersionControl\Git\GitRepository.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\VersionControl\Git\GitTaskFactory.h" />
+    <ClInclude Include="..\..\..\include\CodeSmithy\VersionControl\Git\linkoptions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
