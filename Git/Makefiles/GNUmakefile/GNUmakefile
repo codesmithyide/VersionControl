@@ -37,11 +37,11 @@ endif
 # Additionally, this makefile is customizable with the following
 # settings:
 #
-#      BOOST_ROOT                   Path to the Boost installation
-#      ISHIKO_CPP_COLLECTIONS_ROOT  Path to the Ishiko Collections installation
-#      ISHIKO_CPP_TASKS_ROOT        Path to the Ishiko/Tasks installation
-#      ISHIKO_CPP_ERRORS_ROOT       Path to the Ishiko Errors installation
 #      LIBGIT2_ROOT                 Path to the libgit2 installation
+#      ISHIKO_CPP_ERRORS_ROOT       Path to the Ishiko Errors installation
+#      ISHIKO_CPP_COLLECTIONS_ROOT  Path to the Ishiko Collections installation
+#      ISHIKO_CPP_BOOST_ROOT        Path to the Boost installation
+#      ISHIKO_CPP_TASKS_ROOT        Path to the Ishiko/Tasks installation
 
 # Use "make RANLIB=''" for platforms without ranlib.
 RANLIB ?= ranlib
@@ -68,16 +68,16 @@ endif
 # Configurable settings:
 # 
 
-# Path to the Boost installation
-BOOST_ROOT ?= $(BOOST)
-# Path to the Ishiko Collections installation
-ISHIKO_CPP_COLLECTIONS_ROOT ?= $(ISHIKO_CPP)/Collections
-# Path to the Ishiko/Tasks installation
-ISHIKO_CPP_TASKS_ROOT ?= $(ISHIKO_CPP)/Tasks
-# Path to the Ishiko Errors installation
-ISHIKO_CPP_ERRORS_ROOT ?= $(ISHIKO_CPP)/Errors
 # Path to the libgit2 installation
 LIBGIT2_ROOT ?= $(LIBGIT2)
+# Path to the Ishiko Errors installation
+ISHIKO_CPP_ERRORS_ROOT ?= $(ISHIKO_CPP)/errors
+# Path to the Ishiko Collections installation
+ISHIKO_CPP_COLLECTIONS_ROOT ?= $(ISHIKO_CPP)/collections
+# Path to the Boost installation
+ISHIKO_CPP_BOOST_ROOT ?= $(ISHIKO_CPP_THIRD_PARTY_BOOST)
+# Path to the Ishiko/Tasks installation
+ISHIKO_CPP_TASKS_ROOT ?= $(ISHIKO_CPP)/tasks
 
 # ------------
 
@@ -88,13 +88,13 @@ all: ../Bakefile/../../../Lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyG
 	$(RANLIB) $@
 
 $(_builddir)CodeSmithyGit_GitErrorCategory.o: ../../Source/GitErrorCategory.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitErrorCategory.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitErrorCategory.cpp
 
 $(_builddir)CodeSmithyGit_GitRepository.o: ../../Source/GitRepository.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitRepository.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitRepository.cpp
 
 $(_builddir)CodeSmithyGit_GitTaskFactory.o: ../../Source/GitTaskFactory.cpp
-	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/Include -I$(BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/Include -I$(ISHIKO_CPP_ERRORS_ROOT)/Include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitTaskFactory.cpp
+	$(CXX) -c -o $@ $(CPPFLAGS) $(CXXFLAGS) -MD -MP -fPIC -DPIC -pthread -I$(ISHIKO_CPP_COLLECTIONS_ROOT)/include -I$(ISHIKO_CPP_BOOST_ROOT)/include -I$(ISHIKO_CPP_TASKS_ROOT)/include -I$(ISHIKO_CPP_ERRORS_ROOT)/include -I$(LIBGIT2_ROOT)/include -I../../../Include/CodeSmithy/VersionControl/Git -std=c++11 ../../Source/GitTaskFactory.cpp
 
 clean:
 	rm -f $(_builddir)*.o
