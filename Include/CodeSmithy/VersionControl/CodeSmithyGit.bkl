@@ -1,12 +1,13 @@
+codesmithyidepath = envvar("CODESMITHYIDE");
+import $(codesmithyidepath)/third-party-glue/include/CodeSmithy/ThirdParty/libgit2.bkl;
 ishikopath = envvar("ISHIKO_CPP");
-import $(ishikopath)/Tasks/Include/Ishiko/IshikoTasks.bkl;
-import $(ishikopath)/Errors/Include/Ishiko/Errors.bkl;
-import $(ishikopath)/ThirdPartyGlue/Include/Ishiko/libgit2.bkl;
+import $(ishikopath)/errors/include/Ishiko/Errors.bkl;
+import $(ishikopath)/tasks/include/Ishiko/IshikoTasks.bkl;
 
 setting CODESMITHYIDE_VERSIONCONTROL_ROOT
 {
     help = "Path to the CodeSmithyIDE/VersionControl installation";
-    default = '$(CODESMITHYIDE)/VersionControl';
+    default = '$(CODESMITHYIDE)/version-control';
 }
 
 template CodeSmithyGit : IshikoTasks, IshikoErrors, libgit2
