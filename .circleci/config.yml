@@ -29,7 +29,7 @@ jobs:
           path: /codesmithyide/version-control
       - run:
           name: Build
-          command: cd /codesmithyide/version-control/git/build/GNUmakefile && make
+          command: cd /codesmithyide/version-control/git/build/gnumake && make
       - run:
           name: Test build
           command: cd /codesmithyide/version-control/git/Tests/Makefiles/GNUmakefile && make
