@@ -59,7 +59,7 @@ _equal  = $(and $(findstring $(1),$(2)),$(findstring $(2),$(1)))
 builddir = .
 
 ifneq ($(builddir),.)
-_builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(builddir)/../GNUmakefile/
+_builddir := $(if $(findstring $(abspath $(builddir)),$(builddir)),,../../)$(builddir)/../gnumake/
 _builddir_error := $(shell mkdir -p $(_builddir) 2>&1)
 $(if $(_builddir_error),$(error Failed to create build directory: $(_builddir_error)))
 endif
@@ -81,9 +81,9 @@ ISHIKO_CPP_TASKS_ROOT ?= $(ISHIKO_CPP)/tasks
 
 # ------------
 
-all: ../Bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a
+all: ../bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a
 
-../Bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a: $(_builddir)CodeSmithyGit_GitErrorCategory.o $(_builddir)CodeSmithyGit_GitRepository.o $(_builddir)CodeSmithyGit_GitTaskFactory.o
+../bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a: $(_builddir)CodeSmithyGit_GitErrorCategory.o $(_builddir)CodeSmithyGit_GitRepository.o $(_builddir)CodeSmithyGit_GitTaskFactory.o
 	$(AR) rc $@ $(_builddir)CodeSmithyGit_GitErrorCategory.o $(_builddir)CodeSmithyGit_GitRepository.o $(_builddir)CodeSmithyGit_GitTaskFactory.o
 	$(RANLIB) $@
 
@@ -99,7 +99,7 @@ $(_builddir)CodeSmithyGit_GitTaskFactory.o: ../../Source/GitTaskFactory.cpp
 clean:
 	rm -f $(_builddir)*.o
 	rm -f $(_builddir)*.d
-	rm -f ../Bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a
+	rm -f ../bakefile/../../../lib/lib$(if $(call _equal,$(config),Debug),CodeSmithyGit-d,CodeSmithyGit).a
 
 .PHONY: all clean
 
