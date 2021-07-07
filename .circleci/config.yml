@@ -11,13 +11,13 @@ jobs:
           path: /codesmithyide/version-control
       - run:
           name: Build
-          command: cd /codesmithyide/version-control/Git/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/version-control/git/build/gnumake && make
       - run:
           name: Test build
-          command: cd /codesmithyide/version-control/Git/Tests/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/version-control/git/Tests/Makefiles/GNUmakefile && make
       - run:
           name: Run the tests
-          command: cd /codesmithyide/version-control/Git/Tests/Makefiles/GNUmakefile && ./CodeSmithyGitTests
+          command: cd /codesmithyide/version-control/git/Tests/Makefiles/GNUmakefile && ./CodeSmithyGitTests
   build:
     docker:
       - image: codesmithy/gcc-build-prerequisites:0.1.0
@@ -29,13 +29,13 @@ jobs:
           path: /codesmithyide/version-control
       - run:
           name: Build
-          command: cd /codesmithyide/version-control/Git/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/version-control/git/build/GNUmakefile && make
       - run:
           name: Test build
-          command: cd /codesmithyide/version-control/Git/Tests/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/version-control/git/Tests/Makefiles/GNUmakefile && make
       - run:
           name: Run the tests
-          command: cd /codesmithyide/version-control/Git/Tests/Makefiles/GNUmakefile && ./CodeSmithyGitTests
+          command: cd /codesmithyide/version-control/git/Tests/Makefiles/GNUmakefile && ./CodeSmithyGitTests
 workflows:
   version: 2
   build:
