@@ -31,13 +31,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\GitErrorCategory.cpp">
+    <ClCompile Include="..\..\src\GitErrorCategory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\GitRepository.cpp">
+    <ClCompile Include="..\..\src\GitRepository.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\GitTaskFactory.cpp">
+    <ClCompile Include="..\..\src\GitTaskFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
