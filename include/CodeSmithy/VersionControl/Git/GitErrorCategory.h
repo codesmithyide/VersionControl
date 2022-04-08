@@ -1,14 +1,13 @@
 /*
-    Copyright (c) 2020 Xavier Leclercq
+    Copyright (c) 2020-2022 Xavier Leclercq
     Released under the MIT License
-    See https://github.com/CodeSmithyIDE/VersionControl/blob/master/LICENSE.txt
+    See https://github.com/codesmithyide/version-control/blob/main/LICENSE.txt
 */
 
 #ifndef _CODESMITHY_VERSIONCONTROL_GIT_GITERRORCATEGORY_H_
 #define _CODESMITHY_VERSIONCONTROL_GIT_GITERRORCATEGORY_H_
 
-#include <Ishiko/Errors/ErrorCategory.h>
-#include <Ishiko/Errors/Exception.h>
+#include <Ishiko/Errors.hpp>
 
 namespace CodeSmithy
 {

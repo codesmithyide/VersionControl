@@ -17,27 +17,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\CodeSmithy\VersionControl\Git\GitErrorCategory.h">
+    <ClInclude Include="..\..\src\GitRepositoryTests.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\CodeSmithy\VersionControl\Git\GitRepository.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\CodeSmithy\VersionControl\Git\GitTaskFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\CodeSmithy\VersionControl\Git\linkoptions.h">
+    <ClInclude Include="..\..\src\GitTaskFactoryTests.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\GitErrorCategory.cpp">
+    <ClCompile Include="..\..\src\GitRepositoryTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\GitRepository.cpp">
+    <ClCompile Include="..\..\src\GitTaskFactoryTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\GitTaskFactory.cpp">
+    <ClCompile Include="..\..\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
