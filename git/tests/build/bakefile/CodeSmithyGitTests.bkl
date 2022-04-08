@@ -26,14 +26,14 @@ program CodeSmithyGitTests : CodeSmithyGit, IshikoTestFramework
 
     headers
     {
-        ../../Source/GitRepositoryTests.h
-        ../../Source/GitTaskFactoryTests.h
+        ../../src/GitRepositoryTests.hpp
+        ../../src/GitTaskFactoryTests.hpp
     }
 
     sources
     {
-        ../../Source/main.cpp
-        ../../Source/GitRepositoryTests.cpp
-        ../../Source/GitTaskFactoryTests.cpp
+        ../../src/GitRepositoryTests.cpp
+        ../../src/GitTaskFactoryTests.cpp
+        ../../src/main.cpp
     }
 }

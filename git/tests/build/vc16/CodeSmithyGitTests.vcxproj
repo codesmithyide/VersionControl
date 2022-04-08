@@ -156,13 +156,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\main.cpp" />
-    <ClCompile Include="..\..\Source\GitRepositoryTests.cpp" />
-    <ClCompile Include="..\..\Source\GitTaskFactoryTests.cpp" />
+    <ClCompile Include="..\..\src\GitRepositoryTests.cpp" />
+    <ClCompile Include="..\..\src\GitTaskFactoryTests.cpp" />
+    <ClCompile Include="..\..\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\GitRepositoryTests.h" />
-    <ClInclude Include="..\..\Source\GitTaskFactoryTests.h" />
+    <ClInclude Include="..\..\src\GitRepositoryTests.hpp" />
+    <ClInclude Include="..\..\src\GitTaskFactoryTests.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
