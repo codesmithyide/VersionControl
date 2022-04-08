@@ -14,10 +14,10 @@ jobs:
           command: cd /codesmithyide/version-control/git/build/gnumake && make
       - run:
           name: Test build
-          command: cd /codesmithyide/version-control/git/Tests/Makefiles/GNUmakefile && make
+          command: cd /codesmithyide/version-control/git/tests/build/gnumake && make
       - run:
           name: Run the tests
-          command: cd /codesmithyide/version-control/git/Tests/Makefiles/GNUmakefile && ./CodeSmithyGitTests
+          command: cd /codesmithyide/version-control/git/tests/build/gnumake && ./CodeSmithyGitTests
   build:
     docker:
       - image: codesmithy/gcc-build-prerequisites:0.1.0
