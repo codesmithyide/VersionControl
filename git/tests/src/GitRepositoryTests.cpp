@@ -1,19 +1,19 @@
 /*
-    Copyright (c) 2018-2020 Xavier Leclercq
+    Copyright (c) 2018-2022 Xavier Leclercq
     Released under the MIT License
     See https://github.com/CodeSmithyIDE/VersionControl/blob/master/LICENSE.txt
 */
 
-#include "GitRepositoryTests.h"
+#include "GitRepositoryTests.hpp"
 #include "CodeSmithy/VersionControl/Git/GitRepository.h"
 #include "CodeSmithy/VersionControl/Git/GitErrorCategory.h"
-#include <Ishiko/Errors/Exception.h>
+#include <Ishiko/Errors.hpp>
 #include <boost/filesystem/operations.hpp>
 
-using namespace Ishiko::Tests;
+using namespace Ishiko;
 
-GitRepositoryTests::GitRepositoryTests(const TestNumber& number, const TestEnvironment& environment)
-    : TestSequence(number, "GitRepository tests", environment)
+GitRepositoryTests::GitRepositoryTests(const TestNumber& number, const TestContext& context)
+    : TestSequence(number, "GitRepository tests", context)
 {
     append<HeapAllocationErrorsTest>("Creation test 1", CreationTest1);
     append<HeapAllocationErrorsTest>("init test 1", InitTest1);
@@ -27,38 +27,39 @@ GitRepositoryTests::GitRepositoryTests(const TestNumber& number, const TestEnvir
 void GitRepositoryTests::CreationTest1(Test& test)
 {
     CodeSmithy::GitRepository repository;
-    ISHTF_PASS();
+
+    ISHIKO_TEST_PASS();
 }
 
 void GitRepositoryTests::InitTest1(Test& test)
 {
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "GitRepositoryTests_InitTest1");
+    boost::filesystem::path outputPath(test.context().getTestOutputDirectory() / "GitRepositoryTests_InitTest1");
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
     repository.init(outputPath.string());
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void GitRepositoryTests::CloneTest1(Test& test)
 {
-    boost::filesystem::path inputPath(test.environment().getTestOutputDirectory() / "GitRepositoryTests_InitTest1");
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "GitRepositoryTests_CloneTest1");
+    boost::filesystem::path inputPath(test.context().getTestOutputDirectory() / "GitRepositoryTests_InitTest1");
+    boost::filesystem::path outputPath(test.context().getTestOutputDirectory() / "GitRepositoryTests_CloneTest1");
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
     repository.clone(inputPath.string(), outputPath.string());
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void GitRepositoryTests::CloneTest2(Test& test)
 {
-    boost::filesystem::path inputPath(test.environment().getTestOutputDirectory() / "doesnotexist");
-    boost::filesystem::path outputPath(test.environment().getTestOutputDirectory() / "GitRepositoryTests_CloneTest2");
+    boost::filesystem::path inputPath(test.context().getTestOutputDirectory() / "doesnotexist");
+    boost::filesystem::path outputPath(test.context().getTestOutputDirectory() / "GitRepositoryTests_CloneTest2");
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
@@ -66,45 +67,45 @@ void GitRepositoryTests::CloneTest2(Test& test)
     {
         repository.clone(inputPath.string(), outputPath.string());
 
-        ISHTF_FAIL();
+        ISHIKO_TEST_FAIL();
     }
     catch (const Ishiko::Exception& e)
     {
-        ISHTF_FAIL_IF_NEQ(e.condition().value(), CodeSmithy::GitErrorCategory::eGeneric);
+        ISHIKO_TEST_FAIL_IF_NEQ(e.condition().value(), CodeSmithy::GitErrorCategory::eGeneric);
     }
 
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void GitRepositoryTests::OpenTest1(Test& test)
 {
-    boost::filesystem::path inputPath(test.environment().getTestOutputDirectory() / "GitRepositoryTests_InitTest1");
+    boost::filesystem::path inputPath(test.context().getTestOutputDirectory() / "GitRepositoryTests_InitTest1");
 
     CodeSmithy::GitRepository repository;
     repository.open(inputPath.string());
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
-    ISHTF_PASS();
+    ISHIKO_TEST_PASS();
 }
 
 void GitRepositoryTests::CheckIfRepositoryTest1(Test& test)
 {
-    boost::filesystem::path inputPath(test.environment().getTestOutputDirectory() / "GitRepositoryTests_InitTest1");
+    boost::filesystem::path inputPath(test.context().getTestOutputDirectory() / "GitRepositoryTests_InitTest1");
 
     CodeSmithy::GitRepository repository;
     bool isRepository = repository.checkIfRepository(inputPath.string());
 
-    ISHTF_FAIL_IF_NOT(isRepository);
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF_NOT(isRepository);
+    ISHIKO_TEST_PASS();
 }
 
 void GitRepositoryTests::CheckIfRepositoryTest2(Test& test)
 {
-    boost::filesystem::path inputPath(test.environment().getTestOutputDirectory());
+    boost::filesystem::path inputPath(test.context().getTestOutputDirectory());
 
     CodeSmithy::GitRepository repository;
     bool isRepository = repository.checkIfRepository(inputPath.string());
     
-    ISHTF_FAIL_IF(isRepository);
-    ISHTF_PASS();
+    ISHIKO_TEST_FAIL_IF(isRepository);
+    ISHIKO_TEST_PASS();
 }
