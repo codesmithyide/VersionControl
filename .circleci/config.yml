@@ -20,7 +20,7 @@ jobs:
           command: cd /codesmithyide/version-control/git/tests/build/gnumake && ./CodeSmithyGitTests
   build:
     docker:
-      - image: codesmithy/gcc-build-prerequisites:0.1.0
+      - image: codesmithy/gcc-build-prerequisites:0.2.0
     steps:
       - run:
           name: "Set CODESMITHYIDE environment variables"
@@ -42,3 +42,14 @@ workflows:
     jobs:
       - bootstrap-build
       - build
+  weekly_build:
+    jobs:
+      - bootstrap-build
+      - build
+    triggers:
+      - schedule:
+          cron: "0 8 * * 0"
+          filters:
+            branches:
+              only:
+                 - main
