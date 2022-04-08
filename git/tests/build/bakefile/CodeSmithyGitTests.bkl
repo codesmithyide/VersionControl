@@ -1,0 +1,39 @@
+codesmithyidepath = envvar("CODESMITHYIDE");
+import $(codesmithyidepath)/version-control/include/CodeSmithy/VersionControl/CodeSmithyGit.bkl;
+ishikopath = envvar("ISHIKO_CPP");
+import $(ishikopath)/test-framework/include/Ishiko/TestFramework.bkl;
+
+toolsets = gnu vs2019 vs2017 vs2015 vs2013;
+
+gnu.makefile = ../gnumake/GNUmakefile;
+vs2019.solutionfile = ../vc16/CodeSmithyGitTests.sln;
+vs2017.solutionfile = ../vc15/CodeSmithyGitTests.sln;
+vs2015.solutionfile = ../vc14/CodeSmithyGitTests.sln;
+vs2013.solutionfile = ../vc12/CodeSmithyGitTests.sln;
+
+program CodeSmithyGitTests : CodeSmithyGit, IshikoTestFramework
+{
+    if ($(toolset) == gnu)
+    {
+        cxx-compiler-options = "-std=c++11";
+        libs += CodeSmithyGit IshikoUserTasks IshikoTests IshikoProcess IshikoErrors git2 boost_filesystem ssl crypto pcre z;
+    }
+
+    if ($(toolset) != gnu)
+    {
+        archs = x86 x86_64;
+    }
+
+    headers
+    {
+        ../../Source/GitRepositoryTests.h
+        ../../Source/GitTaskFactoryTests.h
+    }
+
+    sources
+    {
+        ../../Source/main.cpp
+        ../../Source/GitRepositoryTests.cpp
+        ../../Source/GitTaskFactoryTests.cpp
+    }
+}
