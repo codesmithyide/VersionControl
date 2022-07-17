@@ -16,7 +16,8 @@ program CodeSmithyGitTests : CodeSmithyGit, IshikoTestFramework
     if ($(toolset) == gnu)
     {
         cxx-compiler-options = "-std=c++11";
-        libs += CodeSmithyGit IshikoUserTasks IshikoTests IshikoTestFrameworkCore IshikoProcess IshikoErrors git2 boost_filesystem ssl crypto pcre z;
+        libs += CodeSmithyGit IshikoUserTasks IshikoTestFramework IshikoTestFrameworkCore IshikoConfiguration IshikoXML IshikoFileSystem IshikoProcess IshikoTime IshikoText IshikoErrors;
+        libs += git2 fmt boost_filesystem ssl crypto pcre z;
     }
 
     if ($(toolset) != gnu)
