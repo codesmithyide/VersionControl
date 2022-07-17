@@ -21,8 +21,7 @@ GitTaskFactoryTests::GitTaskFactoryTests(const TestNumber& number, const TestCon
 
 void GitTaskFactoryTests::CreateInitTaskTest1(Test& test)
 {
-    boost::filesystem::path outputPath(test.context().getTestOutputDirectory() /
-        "GitTaskFactoryTests_CreateInitTaskTest1");
+    boost::filesystem::path outputPath = test.context().getOutputPath("GitTaskFactoryTests_CreateInitTaskTest1");
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
@@ -36,10 +35,8 @@ void GitTaskFactoryTests::CreateInitTaskTest1(Test& test)
 
 void GitTaskFactoryTests::CreateCloneTaskTest1(Test& test)
 {
-    boost::filesystem::path inputPath(test.context().getTestOutputDirectory() /
-        "GitTaskFactoryTests_CreateInitTaskTest1");
-    boost::filesystem::path outputPath(test.context().getTestOutputDirectory() /
-        "GitTaskFactoryTests_CreateCloneTaskTest1");
+    boost::filesystem::path inputPath = test.context().getOutputPath("GitTaskFactoryTests_CreateInitTaskTest1");
+    boost::filesystem::path outputPath = test.context().getOutputPath("GitTaskFactoryTests_CreateCloneTaskTest1");
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
@@ -55,9 +52,8 @@ void GitTaskFactoryTests::CreateCloneTaskTest1(Test& test)
 
 void GitTaskFactoryTests::CreateCloneTaskTest2(Test& test)
 {
-    boost::filesystem::path inputPath(test.context().getTestOutputDirectory() / "doesnotexist");
-    boost::filesystem::path outputPath(test.context().getTestOutputDirectory() /
-        "GitTaskFactoryTests_CreateCloneTaskTest1");
+    boost::filesystem::path inputPath = test.context().getOutputPath("doesnotexist");
+    boost::filesystem::path outputPath = test.context().getOutputPath("GitTaskFactoryTests_CreateCloneTaskTest1");
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
@@ -71,8 +67,7 @@ void GitTaskFactoryTests::CreateCloneTaskTest2(Test& test)
 
 void GitTaskFactoryTests::CreateOpenTaskTest1(Test& test)
 {
-    boost::filesystem::path inputPath(test.context().getTestOutputDirectory() /
-        "GitTaskFactoryTests_CreateInitTaskTest1");
+    boost::filesystem::path inputPath = test.context().getOutputPath("GitTaskFactoryTests_CreateInitTaskTest1");
 
     CodeSmithy::GitRepository repository;
     std::unique_ptr<UserTask> task = CodeSmithy::GitTaskFactory::CreateOpenTask(repository, inputPath.string());

@@ -33,7 +33,7 @@ void GitRepositoryTests::CreationTest1(Test& test)
 
 void GitRepositoryTests::InitTest1(Test& test)
 {
-    boost::filesystem::path outputPath(test.context().getTestOutputDirectory() / "GitRepositoryTests_InitTest1");
+    boost::filesystem::path outputPath = test.context().getOutputPath("GitRepositoryTests_InitTest1");
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
@@ -45,8 +45,8 @@ void GitRepositoryTests::InitTest1(Test& test)
 
 void GitRepositoryTests::CloneTest1(Test& test)
 {
-    boost::filesystem::path inputPath(test.context().getTestOutputDirectory() / "GitRepositoryTests_InitTest1");
-    boost::filesystem::path outputPath(test.context().getTestOutputDirectory() / "GitRepositoryTests_CloneTest1");
+    boost::filesystem::path inputPath = test.context().getOutputPath("GitRepositoryTests_InitTest1");
+    boost::filesystem::path outputPath = test.context().getOutputPath("GitRepositoryTests_CloneTest1");
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
@@ -58,8 +58,8 @@ void GitRepositoryTests::CloneTest1(Test& test)
 
 void GitRepositoryTests::CloneTest2(Test& test)
 {
-    boost::filesystem::path inputPath(test.context().getTestOutputDirectory() / "doesnotexist");
-    boost::filesystem::path outputPath(test.context().getTestOutputDirectory() / "GitRepositoryTests_CloneTest2");
+    boost::filesystem::path inputPath = test.context().getOutputPath("doesnotexist");
+    boost::filesystem::path outputPath = test.context().getOutputPath("GitRepositoryTests_CloneTest2");
     boost::filesystem::remove_all(outputPath);
 
     CodeSmithy::GitRepository repository;
@@ -79,7 +79,7 @@ void GitRepositoryTests::CloneTest2(Test& test)
 
 void GitRepositoryTests::OpenTest1(Test& test)
 {
-    boost::filesystem::path inputPath(test.context().getTestOutputDirectory() / "GitRepositoryTests_InitTest1");
+    boost::filesystem::path inputPath = test.context().getOutputPath("GitRepositoryTests_InitTest1");
 
     CodeSmithy::GitRepository repository;
     repository.open(inputPath.string());
@@ -90,7 +90,7 @@ void GitRepositoryTests::OpenTest1(Test& test)
 
 void GitRepositoryTests::CheckIfRepositoryTest1(Test& test)
 {
-    boost::filesystem::path inputPath(test.context().getTestOutputDirectory() / "GitRepositoryTests_InitTest1");
+    boost::filesystem::path inputPath = test.context().getOutputPath("GitRepositoryTests_InitTest1");
 
     CodeSmithy::GitRepository repository;
     bool isRepository = repository.checkIfRepository(inputPath.string());
@@ -101,7 +101,7 @@ void GitRepositoryTests::CheckIfRepositoryTest1(Test& test)
 
 void GitRepositoryTests::CheckIfRepositoryTest2(Test& test)
 {
-    boost::filesystem::path inputPath(test.context().getTestOutputDirectory());
+    boost::filesystem::path inputPath = test.context().getOutputDirectory();
 
     CodeSmithy::GitRepository repository;
     bool isRepository = repository.checkIfRepository(inputPath.string());
