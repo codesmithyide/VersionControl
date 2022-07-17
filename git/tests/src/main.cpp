@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 {
     TestHarness theTestHarness("CodeSmithyGit");
 
-    theTestHarness.context().setTestOutputDirectory("../../output");
+    theTestHarness.context().setOutputDirectory("../../output");
 
     TestSequence& theTests = theTestHarness.tests();
     theTests.append<GitRepositoryTests>();
