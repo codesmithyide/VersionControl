@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2017-2020 Xavier Leclercq
+    Copyright (c) 2017-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/CodeSmithyIDE/VersionControl/blob/master/LICENSE.txt
 */
@@ -36,7 +36,7 @@ void GitRepository::clone(const std::string& url, const std::string& clonePath)
     if (err < 0)
     {
         char* msg = giterr_last()->message;
-        Throw(GitErrorCategory::eGeneric, msg, __FILE__, __LINE__);
+        Throw(GitErrorCategory::Value::generic_error, msg, __FILE__, __LINE__);
     }
 }
 
