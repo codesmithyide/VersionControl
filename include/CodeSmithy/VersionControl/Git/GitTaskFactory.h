@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2020-2022 Xavier Leclercq
+    Copyright (c) 2020-2023 Xavier Leclercq
     Released under the MIT License
     See https://github.com/codesmithyide/version-control/blob/main/LICENSE.txt
 */
@@ -8,7 +8,7 @@
 #define _CODESMITHY_VERSIONCONTROL_GIT_GITTASKFACTORY_H_
 
 #include "GitRepository.h"
-#include <Ishiko/UserTasks.hpp>
+#include <Ishiko/Workflows.hpp>
 #include <string>
 
 namespace CodeSmithy
