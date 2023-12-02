@@ -7,7 +7,7 @@ import $(ishikopath)/workflows/include/Ishiko/Workflows.bkl;
 setting CODESMITHYIDE_VERSIONCONTROL_ROOT
 {
     help = "Path to the CodeSmithyIDE/VersionControl installation";
-    default = '$(CODESMITHYIDE)/version-control';
+    default = '$(CODESMITHYIDE_ROOT)/version-control';
 }
 
 template CodeSmithyGit : IshikoWorkflows, IshikoErrors, libgit2
