@@ -91,7 +91,7 @@ ISHIKO_CPP_BOOST_ROOT ?= $(BOOST_ROOT)
 # Path to the Ishiko/C++ Workflows installation
 ISHIKO_CPP_WORKFLOWS_ROOT ?= $(ISHIKO_CPP_ROOT)/workflows
 # Path to the CodeSmithyIDE/VersionControl installation
-CODESMITHYIDE_VERSIONCONTROL_ROOT ?= $(CODESMITHYIDE)/version-control
+CODESMITHYIDE_VERSIONCONTROL_ROOT ?= $(CODESMITHYIDE_ROOT)/version-control
 # Path to the Ishiko/C++ Memory installation
 ISHIKO_CPP_MEMORY_ROOT ?= $(ISHIKO_CPP_ROOT)/memory
 # Path to the Ishiko/C++ Text installation
