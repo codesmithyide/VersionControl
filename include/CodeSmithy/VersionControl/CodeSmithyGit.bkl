@@ -1,6 +1,6 @@
-codesmithyidepath = envvar("CODESMITHYIDE");
+codesmithyidepath = envvar("CODESMITHYIDE_ROOT");
 import $(codesmithyidepath)/third-party-glue/include/CodeSmithy/ThirdParty/libgit2.bkl;
-ishikopath = envvar("ISHIKO_CPP");
+ishikopath = envvar("ISHIKO_CPP_ROOT");
 import $(ishikopath)/errors/include/Ishiko/Errors.bkl;
 import $(ishikopath)/workflows/include/Ishiko/Workflows.bkl;
 
