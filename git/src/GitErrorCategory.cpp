@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2020-2023 Xavier Leclercq
+    Copyright (c) 2020-2024 Xavier Leclercq
     Released under the MIT License
     See https://github.com/CodeSmithyIDE/VersionControl/blob/master/LICENSE.txt
 */
@@ -22,19 +22,16 @@ const char* GitErrorCategory::name() const noexcept
     return "CodeSmithy::GitErrorCategory";
 }
 
-std::ostream& GitErrorCategory::streamOut(int value, std::ostream& os) const
+const char* GitErrorCategory::message(int ev, char* buffer, size_t len) const noexcept
 {
-    switch (static_cast<Value>(value))
+    switch (static_cast<Value>(ev))
     {
     case Value::generic_error:
-        os << "generic error";
-        break;
+        return "generic error";
 
     default:
-        os << "unknown value";
-        break;
+        return "unknown value";
     }
-    return os;
 }
 
 void Throw(GitErrorCategory::Value value, const std::string& message, const char* file, int line)
@@ -42,12 +39,12 @@ void Throw(GitErrorCategory::Value value, const std::string& message, const char
     throw Exception(static_cast<int>(value), GitErrorCategory::Get(), message, file, line);
 }
 
-bool operator==(const Ishiko::ErrorCondition& error, GitErrorCategory::Value value)
+bool operator==(const Ishiko::ErrorCode& error, GitErrorCategory::Value value)
 {
     return ((&error.category() == &GitErrorCategory::Get()) && (error.value() == static_cast<int>(value)));
 }
 
-bool operator!=(const Ishiko::ErrorCondition& error, GitErrorCategory::Value value)
+bool operator!=(const Ishiko::ErrorCode& error, GitErrorCategory::Value value)
 {
     return !(error == value);
 }
