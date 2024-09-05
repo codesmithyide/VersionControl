@@ -1,5 +1,5 @@
 /*
-    Copyright (c) 2018-2023 Xavier Leclercq
+    Copyright (c) 2018-2024 Xavier Leclercq
     Released under the MIT License
     See https://github.com/CodeSmithyIDE/VersionControl/blob/master/LICENSE.txt
 */
@@ -71,7 +71,7 @@ void GitRepositoryTests::CloneTest2(Test& test)
     }
     catch (const Ishiko::Exception& e)
     {
-        ISHIKO_TEST_FAIL_IF_NEQ(e.condition(), CodeSmithy::GitErrorCategory::Value::generic_error);
+        ISHIKO_TEST_FAIL_IF_NEQ(e.code(), CodeSmithy::GitErrorCategory::Value::generic_error);
     }
 
     ISHIKO_TEST_PASS();
