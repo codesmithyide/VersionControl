@@ -6,36 +6,36 @@ jobs:
     steps:
       - run: 
           name: "Set CODESMITHYIDE_ROOT environment variables"
-          command: echo 'export CODESMITHYIDE_ROOT="/codesmithyide"' >> $BASH_ENV
+          command: echo 'export CODESMITHYIDE_ROOT="/workspace/projects/codesmithyide"' >> $BASH_ENV
       - checkout:
-          path: /codesmithyide/version-control
+          path: /workspace/projects/codesmithyide/version-control
       - run:
           name: Build
-          command: cd /codesmithyide/version-control/git/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide/version-control/git/build-files/gnumake && make
       - run:
           name: Test build
-          command: cd /codesmithyide/version-control/git/tests/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide/version-control/git/tests/build-files/gnumake && make
       - run:
           name: Run the tests
-          command: cd /codesmithyide/version-control/git/tests/build/gnumake && ./CodeSmithyGitTests
+          command: cd /workspace/projects/codesmithyide/version-control/git/tests/build-files/gnumake && ./CodeSmithyGitTests
   build:
     docker:
       - image: codesmithy/gcc-build-prerequisites:0.11.0
     steps:
       - run:
           name: "Set CODESMITHYIDE_ROOT environment variables"
-          command: echo 'export CODESMITHYIDE_ROOT="/codesmithyide"' >> $BASH_ENV
+          command: echo 'export CODESMITHYIDE_ROOT="/workspace/projects/codesmithyide"' >> $BASH_ENV
       - checkout:
-          path: /codesmithyide/version-control
+          path: /workspace/projects/codesmithyide/version-control
       - run:
           name: Build
-          command: cd /codesmithyide/version-control/git/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide/version-control/git/build-files/gnumake && make
       - run:
           name: Test build
-          command: cd /codesmithyide/version-control/git/tests/build/gnumake && make
+          command: cd /workspace/projects/codesmithyide/version-control/git/tests/build-files/gnumake && make
       - run:
           name: Run the tests
-          command: cd /codesmithyide/version-control/git/tests/build/gnumake && ./CodeSmithyGitTests
+          command: cd /workspace/projects/codesmithyide/version-control/git/tests/build-files/gnumake && ./CodeSmithyGitTests
 workflows:
   version: 2
   build:
