@@ -1,11 +1,8 @@
-/*
-    Copyright (c) 2018-2022 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/CodeSmithyIDE/VersionControl/blob/master/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2015-2024 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
-#ifndef _CODESMITHYIDE_VERSIONCONTROL_GIT_TESTS_GITREPOSITORYTESTS_HPP_
-#define _CODESMITHYIDE_VERSIONCONTROL_GIT_TESTS_GITREPOSITORYTESTS_HPP_
+#ifndef GUARD_CODESMITHYIDE_VERSIONCONTROL_GIT_TESTS_GITREPOSITORYTESTS_HPP
+#define GUARD_CODESMITHYIDE_VERSIONCONTROL_GIT_TESTS_GITREPOSITORYTESTS_HPP
 
 #include <Ishiko/TestFramework.hpp>
 
@@ -19,6 +16,7 @@ private:
     static void InitTest1(Ishiko::Test& test);
     static void CloneTest1(Ishiko::Test& test);
     static void CloneTest2(Ishiko::Test& test);
+    static void CloneTest3(Ishiko::Test& test);
     static void OpenTest1(Ishiko::Test& test);
     static void CheckIfRepositoryTest1(Ishiko::Test& test);
     static void CheckIfRepositoryTest2(Ishiko::Test& test);

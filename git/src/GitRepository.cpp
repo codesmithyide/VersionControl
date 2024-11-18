@@ -1,14 +1,10 @@
-/*
-    Copyright (c) 2017-2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/CodeSmithyIDE/VersionControl/blob/master/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2015-2024 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
 #include "GitRepository.h"
 #include "GitErrorCategory.h"
 
-namespace CodeSmithy
-{
+using namespace CodeSmithy;
 
 GitRepository::GitRepository()
     : m_repository(0)
@@ -74,6 +70,4 @@ void GitRepository::pull()
 bool GitRepository::checkIfRepository(const std::string& path) const
 {
     return (git_repository_open_ext(NULL, path.c_str(), GIT_REPOSITORY_OPEN_NO_SEARCH, NULL) == 0);
-}
-
 }

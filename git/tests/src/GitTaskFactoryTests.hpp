@@ -1,11 +1,8 @@
-/*
-    Copyright (c) 2020-2022 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/CodeSmithyIDE/VersionControl/blob/master/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2015-2024 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
-#ifndef _CODESMITHYIDE_VERSIONCONTROL_GIT_TESTS_GITTASKFACTORYTESTS_HPP_
-#define _CODESMITHYIDE_VERSIONCONTROL_GIT_TESTS_GITTASKFACTORYTESTS_HPP_
+#ifndef GUARD_CODESMITHYIDE_VERSIONCONTROL_GIT_TESTS_GITTASKFACTORYTESTS_HPP
+#define GUARD_CODESMITHYIDE_VERSIONCONTROL_GIT_TESTS_GITTASKFACTORYTESTS_HPP
 
 #include <Ishiko/TestFramework.hpp>
 
