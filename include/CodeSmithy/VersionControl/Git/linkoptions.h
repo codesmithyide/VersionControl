@@ -1,8 +1,5 @@
-/*
-    Copyright (c) 2016-2020 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/CodeSmithyIDE/VersionControl/blob/master/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2016-2024 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
 #ifndef _CODESMITHYIDE_VERSIONCONTROL_GIT_LINKOPTIONS_H_
 #define _CODESMITHYIDE_VERSIONCONTROL_GIT_LINKOPTIONS_H_

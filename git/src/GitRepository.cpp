@@ -1,8 +1,5 @@
-/*
-    Copyright (c) 2017-2023 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/CodeSmithyIDE/VersionControl/blob/master/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2016-2024 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
 #include "GitRepository.h"
 #include "GitErrorCategory.h"

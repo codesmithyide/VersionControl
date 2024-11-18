@@ -1,8 +1,5 @@
-/*
-    Copyright (c) 2020-20233 Xavier Leclercq
-    Released under the MIT License
-    See https://github.com/codesmithyide/version-control/blob/main/LICENSE.txt
-*/
+// SPDX-FileCopyrightText: 2016-2024 Xavier Leclercq
+// SPDX-License-Identifier: MIT
 
 #include "GitTaskFactory.h"
 #include <Ishiko/Workflows.hpp>
