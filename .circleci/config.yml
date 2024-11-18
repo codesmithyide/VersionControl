@@ -20,7 +20,7 @@ jobs:
           command: cd /workspace/projects/codesmithyide/version-control/git/tests/build-files/gnumake && ./CodeSmithyGitTests
   build:
     docker:
-      - image: codesmithy/gcc-build-prerequisites:0.11.0
+      - image: codesmithy/gcc-build-prerequisites:0.14.0
     steps:
       - run:
           name: "Set CODESMITHYIDE_ROOT environment variables"
