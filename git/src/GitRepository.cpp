@@ -3,6 +3,7 @@
 
 #include "GitRepository.h"
 #include "GitErrorCategory.h"
+#include <iostream>
 
 namespace CodeSmithy
 {
@@ -28,6 +29,16 @@ void GitRepository::init(const std::string& path)
 
 void GitRepository::clone(const std::string& url, const std::string& clonePath)
 {
+    int features = git_libgit2_features();
+    if (features & GIT_FEATURE_HTTPS)
+    {
+        std::cerr << "GIT_FEATURE_HTTPS" << std::endl;
+    }
+    if (features & GIT_FEATURE_SSH)
+    {
+        std::cerr << "GIT_FEATURE_SSH" << std::endl;
+    }
+
     // TODO
     int err = git_clone(&m_repository, url.c_str(), clonePath.c_str(), 0);
     if (err < 0)
