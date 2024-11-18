@@ -16,6 +16,7 @@ GitRepositoryTests::GitRepositoryTests(const TestNumber& number, const TestConte
     append<HeapAllocationErrorsTest>("init test 1", InitTest1);
     append<HeapAllocationErrorsTest>("clone test 1", CloneTest1);
     append<HeapAllocationErrorsTest>("clone test 2", CloneTest2);
+    append<HeapAllocationErrorsTest>("clone test 3", CloneTest3);
     append<HeapAllocationErrorsTest>("open test 1", OpenTest1);
     append<HeapAllocationErrorsTest>("checkIfRepository test 1", CheckIfRepositoryTest1);
     append<HeapAllocationErrorsTest>("checkIfRepository test 2", CheckIfRepositoryTest2);
@@ -71,6 +72,18 @@ void GitRepositoryTests::CloneTest2(Test& test)
         ISHIKO_TEST_FAIL_IF_NEQ(e.code(), CodeSmithy::GitErrorCategory::Value::generic_error);
     }
 
+    ISHIKO_TEST_PASS();
+}
+
+void GitRepositoryTests::CloneTest3(Test& test)
+{
+    boost::filesystem::path output_path = test.context().getOutputPath("GitRepositoryTests_CloneTest3");
+    boost::filesystem::remove_all(output_path);
+
+    CodeSmithy::GitRepository repository;
+    repository.clone("https://github.com/codesmithyide/version-control.git", output_path.string());
+
+    // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
     ISHIKO_TEST_PASS();
 }
 
