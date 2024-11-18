@@ -81,7 +81,7 @@ void GitRepositoryTests::CloneTest3(Test& test)
     boost::filesystem::remove_all(output_path);
 
     CodeSmithy::GitRepository repository;
-    repository.clone("https://github.com/codesmithyide/version-control.git", output_path.string());
+    repository.clone("https://github.com/codesmithyide/version-control", output_path.string());
 
     // TODO : some way to compare directories and make sure it looks good. Or run some checks on the repo, I don't know.
     ISHIKO_TEST_PASS();
