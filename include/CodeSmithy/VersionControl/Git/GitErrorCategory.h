@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2016-2024 Xavier Leclercq
+// SPDX-FileCopyrightText: 2015-2024 Xavier Leclercq
 // SPDX-License-Identifier: MIT
 
 #ifndef GUARD_CODESMITHY_VERSIONCONTROL_GIT_GITERRORCATEGORY_H
